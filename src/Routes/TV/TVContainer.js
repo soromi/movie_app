@@ -2,10 +2,24 @@ import React from "react";
 import TVPresenter from "./TVPresenter";
 
 export default class extends React.Component {
-	state = {};
+	state = {
+		airingToday: null,
+		topRated: null,
+		popular: null,
+		loading: true,
+		error: null
+	};
 
 	render() {
-		const {} = this.state;
-		return <TVPresenter />;
+		const { airingToday, topRated, popular, loading, error } = this.state;
+		return (
+			<TVPresenter
+				airingToday={airingToday}
+				topRated={topRated}
+				popular={popular}
+				loading={loading}
+				error={error}
+			/>
+		);
 	}
 }

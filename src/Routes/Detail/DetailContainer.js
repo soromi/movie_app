@@ -2,10 +2,16 @@ import React from "react";
 import DetailPresenter from "./DetailPresenter";
 
 export default class extends React.Component {
-	state = {};
+	state = {
+		result: null,
+		loading: true,
+		error: null
+	};
 
 	render() {
-		const {} = this.state;
-		return <DetailPresenter />;
+		const { result, loading, error } = this.state;
+		return (
+			<DetailPresenter result={result} loading={loading} error={error} />
+		);
 	}
 }
