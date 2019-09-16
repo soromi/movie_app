@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Section from "Components/Section";
 import Loader from "Components/Loader";
+import Error from "Components/Error";
 
 const Container = styled.div``;
 
@@ -55,6 +56,15 @@ const SearchPresenter = ({
 					</Section>
 				)}
 				<Section />
+
+				{/* 통신 에러 */}
+				{error && <Error text={error} />}
+
+				{/* 결과값 없음 */}
+				{movieResults &&
+					tvResults &&
+					movieResults.length === 0 &&
+					tvResults.length === 0 && <Error text={"Nothing Found"} />}
 			</>
 		)}
 	</Container>
