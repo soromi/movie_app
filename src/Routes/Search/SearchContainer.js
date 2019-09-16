@@ -7,7 +7,7 @@ export default class extends React.Component {
 		movieResults: null,
 		tvResults: null,
 		searchTerm: "",
-		loading: true,
+		loading: false,
 		error: null
 	};
 
@@ -15,11 +15,22 @@ export default class extends React.Component {
 	// 	this.handleSubmit();
 	// }
 
-	handleSubmit = () => {
+	handleSubmit = e => {
+		// form submit 기능의 브라우저 새로고침 방지 및 이벤트 차단
+		e.preventDefault();
+
 		const { searchTerm } = this.state;
 		if (searchTerm !== "") {
 			this.searchByTerm();
 		}
+	};
+
+	updateTerm = e => {
+		const {
+			target: { value }
+		} = e;
+		this.setState({ searchTerm: value });
+		console.log(value);
 	};
 
 	searchByTerm = async () => {
@@ -57,6 +68,7 @@ export default class extends React.Component {
 				loading={loading}
 				error={error}
 				handleSubmit={this.handleSubmit}
+				updateTerm={this.updateTerm}
 			/>
 		);
 	}
