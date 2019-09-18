@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import DetailPoster from "Components/DetailPoster";
 import Loader from "Components/Loader";
+import DBLogo from "asset/icon_imdb.png";
 
 const Container = styled.div`
 	position: relative;
@@ -55,9 +56,21 @@ const Title = styled.h3`
 
 const ItemContainer = styled.div`
 	margin: 20px 0;
+	> * {
+		vertical-align: -webkit-baseline-middle;
+	}
 `;
 
 const Item = styled.span``;
+
+const DBLink = styled.a`
+	display: inline-block;
+	width: 32px;
+	height: 16px;
+	background-image: url(${DBLogo});
+	background-size: cover;
+	margin-left: 10px;
+`;
 
 const Divider = styled.span`
 	margin: 0 10px;
@@ -129,6 +142,10 @@ const DetailPresenter = ({ result, loading, error }) =>
 										: `${genre.name} / `
 								)}
 						</Item>
+						<DBLink
+							href={`https://www.imdb.com/title/${result.imdb_id}`}
+							target="_blank"
+						/>
 					</ItemContainer>
 					<Overview>{result.overview}</Overview>
 					<PosterContainer>
