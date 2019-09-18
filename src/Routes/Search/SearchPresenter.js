@@ -7,7 +7,15 @@ import Poster from "Components/Poster";
 import Loader from "Components/Loader";
 import Error from "Components/Error";
 
-const Container = styled.div``;
+const Container = styled.div`
+	height: calc(100vh - 50px);
+	overflow: auto;
+	padding: 20px 0;
+	-ms-overflow-style: none;
+	&::-webkit-scrollbar {
+		display: none !important;
+	}
+`;
 
 const Form = styled.form`
 	width: 100%;
@@ -18,6 +26,9 @@ const Input = styled.input`
 	all: unset;
 	width: 100%;
 	font-size: 30px;
+	@media (max-width: 767px) {
+		font-size: 20px;
+	}
 `;
 
 const SearchPresenter = ({

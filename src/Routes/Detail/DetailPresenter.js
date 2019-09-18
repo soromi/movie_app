@@ -9,8 +9,12 @@ import DBLogo from "asset/icon_imdb.png";
 const Container = styled.div`
 	position: relative;
 	height: calc(100vh - 50px);
-	width: 100%;
+	width: calc(100% + 40px);
+	left: -20px;
 	padding: 50px;
+	@media (max-width: 767px) {
+		padding: 0;
+	}
 `;
 
 const Backdrop = styled.div`
@@ -33,21 +37,45 @@ const Content = styled.div`
 	width: 100%;
 	height: 100%;
 	z-index: 1;
+	@media (max-width: 767px) {
+		display: inline-block;
+		height: 100%;
+		margin-left: initial;
+		overflow: auto;
+	}
 `;
 
 const Cover = styled.div`
 	width: 30%;
-	height: 100%;
+	height: 40vw;
 	background-color: rgba(0, 0, 0, 0.5);
 	background-image: url(${props => props.bgImage});
 	background-position: center center;
 	background-size: cover;
 	border-radius: 5px;
+	@media (max-width: 767px) {
+		width: 100%;
+		height: 66vh;
+		border-radius: 0;
+	}
 `;
 
 const Data = styled.div`
 	width: 70%;
+	height: calc(100% + 45px);
 	margin-left: 40px;
+	overflow: auto;
+	-ms-overflow-style: none;
+	&::-webkit-scrollbar {
+		display: none !important;
+	}
+	@media (max-width: 767px) {
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+		padding: 20px;
+		overflow: initial;
+	}
 `;
 
 const Title = styled.h3`
@@ -70,6 +98,11 @@ const DBLink = styled.a`
 	background-image: url(${DBLogo});
 	background-size: cover;
 	margin-left: 10px;
+	@media (max-width: 767px) {
+		display: block;
+		margin-left: 0;
+		margin-top: 10px;
+	}
 `;
 
 const Divider = styled.span`
@@ -86,7 +119,12 @@ const PosterContainer = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 125px);
 	grid-gap: 25px;
-	margin-top: 50px;
+	margin: 50px 0;
+	@media (max-width: 767px) {
+		grid-template-rows: repeat(auto-fill, 75vw);
+		grid-template-columns: repeat(auto-fill, 47%);
+		grid-gap: 5vw;
+	}
 `;
 
 const DetailPresenter = ({ result, loading, error }) =>
@@ -123,14 +161,16 @@ const DetailPresenter = ({ result, loading, error }) =>
 					<ItemContainer>
 						<Item>
 							{result.original_title
-								? result.release_date.substring(0, 4)
-								: result.first_air_date.substring(0, 4)}
+								? result.original_title.substring(0, 4)
+								: result.first_air_date &&
+								  result.first_air_date.substring(0, 4)}
 						</Item>
 						<Divider>•</Divider>
 						<Item>
 							{result.runtime
 								? result.runtime
-								: result.episode_run_time[0]}{" "}
+								: result.episode_run_time &&
+								  result.episode_run_time[0]}{" "}
 							min
 						</Item>
 						<Divider>•</Divider>
@@ -142,15 +182,17 @@ const DetailPresenter = ({ result, loading, error }) =>
 										: `${genre.name} / `
 								)}
 						</Item>
-						<DBLink
-							href={`https://www.imdb.com/title/${result.imdb_id}`}
-							target="_blank"
-						/>
+						{result.imdb_id && (
+							<DBLink
+								href={`https://www.imdb.com/title/${result.imdb_id}`}
+								target="_blank"
+							/>
+						)}
 					</ItemContainer>
 					<Overview>{result.overview}</Overview>
-					<PosterContainer>
-						{result.seasons &&
-							result.seasons.map(show => (
+					{result.seasons && (
+						<PosterContainer>
+							{result.seasons.map(show => (
 								<DetailPoster
 									key={show.id}
 									id={show.id}
@@ -162,7 +204,8 @@ const DetailPresenter = ({ result, loading, error }) =>
 									}
 								/>
 							))}
-					</PosterContainer>
+						</PosterContainer>
+					)}
 				</Data>
 			</Content>
 		</Container>

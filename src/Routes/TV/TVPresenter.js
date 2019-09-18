@@ -8,8 +8,12 @@ import Loader from "Components/Loader";
 import Error from "Components/Error";
 
 const Container = styled.div`
-	:not(:last-child) {
-		margin-bottom: 50px;
+	height: calc(100vh - 50px);
+	overflow: auto;
+	padding: 30px 0;
+	-ms-overflow-style: none;
+	&::-webkit-scrollbar {
+		display: none !important;
 	}
 `;
 

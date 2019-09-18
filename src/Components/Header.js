@@ -34,11 +34,12 @@ const ALink = styled(Link)`
 	height: 50px;
 	align-items: center;
 	justify-content: center;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent;
 `;
 
 export default withRouter(({ location: { pathname, key } }) => (
 	<Header>
-		{console.log(pathname)}
 		<List>
 			<Item current={pathname === "/"}>
 				<ALink to="/">Movie</ALink>

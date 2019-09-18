@@ -15,6 +15,9 @@ const Image = styled.div`
 	border-radius: 4px;
 	background-position: center center;
 	transition: opacity 0.1s linear;
+	@media (max-width: 767px) {
+		height: 60vw;
+	}
 `;
 
 const Rating = styled.span`
