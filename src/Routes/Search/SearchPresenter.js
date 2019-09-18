@@ -1,4 +1,5 @@
 import React from "react";
+import Helmet from "react-helmet";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Section from "Components/Section";
@@ -29,6 +30,10 @@ const SearchPresenter = ({
 	updateTerm
 }) => (
 	<Container>
+		<Helmet>
+			<title>Search | Movie App</title>
+		</Helmet>
+
 		{/* 검색창 */}
 		<Form onSubmit={handleSubmit}>
 			<Input
