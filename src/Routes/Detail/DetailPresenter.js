@@ -2,12 +2,13 @@ import React from "react";
 import Helmet from "react-helmet";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import DetailPoster from "Components/DetailPoster";
 import Loader from "Components/Loader";
 
 const Container = styled.div`
+	position: relative;
 	height: calc(100vh - 50px);
 	width: 100%;
-	position: relative;
 	padding: 50px;
 `;
 
@@ -66,7 +67,13 @@ const Overview = styled.p`
 	font-size: 12px;
 	opacity: 0.7;
 	line-height: 1.5;
-	width: 50%;
+`;
+
+const PosterContainer = styled.div`
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 125px);
+	grid-gap: 25px;
+	margin-top: 50px;
 `;
 
 const DetailPresenter = ({ result, loading, error }) =>
@@ -124,6 +131,21 @@ const DetailPresenter = ({ result, loading, error }) =>
 						</Item>
 					</ItemContainer>
 					<Overview>{result.overview}</Overview>
+					<PosterContainer>
+						{result.seasons &&
+							result.seasons.map(show => (
+								<DetailPoster
+									key={show.id}
+									id={show.id}
+									title={show.name}
+									imageUrl={show.poster_path}
+									year={
+										show.air_date &&
+										show.air_date.substring(0, 4)
+									}
+								/>
+							))}
+					</PosterContainer>
 				</Data>
 			</Content>
 		</Container>
