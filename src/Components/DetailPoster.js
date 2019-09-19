@@ -13,7 +13,6 @@ const Image = styled.div`
 	background-size: cover;
 	border-radius: 4px;
 	background-position: center center;
-	transition: opacity 0.1s linear;
 	@media (max-width: 767px) {
 		height: 60vw;
 	}
@@ -34,7 +33,7 @@ const Year = styled.span`
 	color: rgba(255, 255, 255, 0.5);
 `;
 
-const DetailPoster = ({ id, title, imageUrl, rating, year }) => (
+const DetailPoster = ({ title, imageUrl, rating, year }) => (
 	<Container>
 		<ImageContainer>
 			<Image
@@ -49,7 +48,6 @@ const DetailPoster = ({ id, title, imageUrl, rating, year }) => (
 );
 
 DetailPoster.propTypes = {
-	id: PropTypes.number.isRequired,
 	title: PropTypes.string.isRequired,
 	imageUrl: PropTypes.string,
 	year: PropTypes.string

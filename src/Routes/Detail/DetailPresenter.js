@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import DetailPoster from "Components/DetailPoster";
+import CompanieLogo from "Components/CompanieLogo";
 import Loader from "Components/Loader";
 import DBLogo from "asset/icon_imdb.png";
 
@@ -106,13 +107,25 @@ const DBLink = styled.a`
 `;
 
 const Divider = styled.span`
-	margin: 0 10px;
+	margin: 0 5px;
 `;
 
 const Overview = styled.p`
 	font-size: 12px;
 	opacity: 0.7;
 	line-height: 1.5;
+`;
+
+const CompanieContainer = styled.div`
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 125px);
+	grid-gap: 25px;
+	margin: 50px 0;
+	@media (max-width: 767px) {
+		grid-template-rows: repeat(auto-fill, 30vw);
+		grid-template-columns: repeat(auto-fill, 20%);
+		grid-gap: 5vw;
+	}
 `;
 
 const PosterContainer = styled.div`
@@ -190,12 +203,27 @@ const DetailPresenter = ({ result, loading, error }) =>
 						)}
 					</ItemContainer>
 					<Overview>{result.overview}</Overview>
+
+					{result.production_companies.length > 0 && (
+						<CompanieContainer>
+							{console.log(result.production_companies)}
+							{result.production_companies.map(companies => (
+								<CompanieLogo
+									key={companies.id}
+									name={companies.name}
+									logo={companies.logo_path}
+									country={companies.origin_country}
+								/>
+							))}
+						</CompanieContainer>
+					)}
+
 					{result.seasons && (
 						<PosterContainer>
 							{result.seasons.map(show => (
 								<DetailPoster
 									key={show.id}
-									id={show.id}
+									// id={show.id}
 									title={show.name}
 									imageUrl={show.poster_path}
 									year={
