@@ -30,7 +30,6 @@ export default class extends React.Component {
 			target: { value }
 		} = e;
 		this.setState({ searchTerm: value });
-		console.log(value);
 	};
 
 	searchByTerm = async () => {
