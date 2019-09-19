@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.js": "/movie_app/static/js/main.065d6012.chunk.js",
+    "main.js.map": "/movie_app/static/js/main.065d6012.chunk.js.map",
+    "runtime~main.js": "/movie_app/static/js/runtime~main.76fa3daa.js",
+    "runtime~main.js.map": "/movie_app/static/js/runtime~main.76fa3daa.js.map",
+    "static/js/2.909dc61b.chunk.js": "/movie_app/static/js/2.909dc61b.chunk.js",
+    "static/js/2.909dc61b.chunk.js.map": "/movie_app/static/js/2.909dc61b.chunk.js.map",
+    "index.html": "/movie_app/index.html",
+    "precache-manifest.c9aa99dbf1a4939a6f1046a6c5976664.js": "/movie_app/precache-manifest.c9aa99dbf1a4939a6f1046a6c5976664.js",
+    "service-worker.js": "/movie_app/service-worker.js",
+    "static/media/icon_imdb.png": "/movie_app/static/media/icon_imdb.325c546d.png"
+  }
+}
