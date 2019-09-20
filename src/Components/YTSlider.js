@@ -22,7 +22,7 @@ const YT = styled(Iframe)`
 
 const YTSlider = ({ videoKey }) => (
 	<Container>
-		<YT url={`http://www.youtube.com/embed/${videoKey}`} />
+		<YT url={`https://www.youtube.com/embed/${videoKey}`} />
 	</Container>
 );
 

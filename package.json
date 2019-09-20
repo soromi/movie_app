@@ -23,7 +23,7 @@
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://soromi.github.io/movie_app",
+  "homepage": "https://soromi.github.io/movie_app/",
   "eslintConfig": {
     "extends": "react-app"
   },
