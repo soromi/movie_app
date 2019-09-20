@@ -22,6 +22,22 @@ const globalStyles = createGlobalStyle`
         color: inherit;
         text-decoration: none;
     }
+    button {
+        border: none;
+        margin: 0;
+        padding: 0;
+        width: auto;
+        overflow: visible;
+        background: transparent;
+        color: inherit;
+        text-align: inherit;
+        outline: none;
+        cursor: pointer;
+        &::-moz-focus-inner {
+            border: 0;
+            padding: 0;
+        }
+    }
 `;
 
 export default globalStyles;
